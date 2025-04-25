@@ -151,46 +151,79 @@
         </nav>
     </div>
     <!-- Navbar End -->
-    <!-- Hero Section Start -->
-   
-    <section class="modern-hero">
-        <div class="video-overlay"></div>
-        
-        <!-- YouTube video iframe as background -->
-        <div class="youtube-video-container">
-            <iframe id="youtube-background" src="https://www.youtube.com/embed/111lzdjuE6k?autoplay=1&mute=1&loop=1&playlist=111lzdjuE6k&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        
-        <div class="hero-content-container">
-            <div class="hero-content">
-             <div class="hero-tagline" style="color: white;">Living with Meaning and Purpose</div>
-                <h1 class="hero-title">
-                    <span class="title-line">Lutheran Care Center</span>
-                    <span class="title-underline"></span>
-                </h1>
-                <p class="hero-subtitle">
-                    Eben Ezer creates an environment where life happens, fostering independence 
-                    and wellbeing through compassionate care.
-                </p>
-                <div class="hero-actions">
-                    <a href="about.html" class="primary-action">
-                        Discover Our Community
-                        <span class="action-arrow">→</span>
-                    </a>
-                    <a href="about.html" class="secondary-action">
-                        Our Care Philosophy
-                        <span class="action-arrow">→</span>
-                    </a>
-                </div>
+   <section class="modern-hero">
+    <div class="video-overlay"></div>
+
+    <!-- YouTube video iframe as background -->
+    <div class="youtube-video-container">
+        <iframe
+            id="youtube-background"
+            src="https://www.youtube.com/embed/111lzdjuE6k?autoplay=1&mute=1&loop=1&playlist=111lzdjuE6k&controls=0&modestbranding=1&rel=0"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+        ></iframe>
+    </div>
+
+    <div class="hero-content-container">
+        <div class="hero-content">
+            <div class="hero-tagline" style="color: white;">Living with Meaning and Purpose</div>
+            <h1 class="hero-title">
+                <span class="title-line">Lutheran Care Center</span>
+                <span class="title-underline"></span>
+            </h1>
+            <p class="hero-subtitle">
+                Eben Ezer creates an environment where life happens, fostering
+                independence and wellbeing through compassionate care.
+            </p>
+            <div class="hero-actions">
+                <a href="about.html" class="primary-action">
+                    Discover Our Community
+                    <span class="action-arrow">→</span>
+                </a>
+                <a href="about.html" class="secondary-action">
+                    Our Care Philosophy
+                    <span class="action-arrow">→</span>
+                </a>
             </div>
         </div>
-        
-        <div class="scroll-indicator">
-            <span>Explore More</span>
-            <div class="indicator-arrow"></div>
-        </div>
-    </section>
-    
+    </div>
+
+    <div class="scroll-indicator">
+        <span>Explore More</span>
+        <div class="indicator-arrow"></div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Load the YouTube API
+        function loadYouTubeAPI() {
+            const tag = document.createElement("script");
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName("script")[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+
+        // This function will be called by YouTube API when it's ready
+        window.onYouTubeIframeAPIReady = function () {
+            const player = new YT.Player("youtube-background", {
+                events: {
+                    onReady: onPlayerReady,
+                },
+            });
+        };
+
+        function onPlayerReady(event) {
+            // Mute and play video
+            event.target.mute();
+            event.target.playVideo();
+        }
+
+        // Load the YouTube API
+        loadYouTubeAPI();
+    });
+</script>
     <style>
     .modern-hero {
         position: relative;
@@ -460,101 +493,6 @@
         }
     }
     </style>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // For iOS devices, we need to handle autoplay restrictions
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        }
-        
-        // Check if the video is playing (for iOS workaround)
-        function checkVideoPlayback() {
-            const iframe = document.getElementById('youtube-background');
-            const isPlaying = !iframe.paused; // This won't actually work due to cross-origin restrictions
-            
-            // For iOS, we'll need to use a different approach since we can't access iframe properties
-            if (isIOS()) {
-                // Create a small, invisible play button that will trigger the video
-                const playTrigger = document.createElement('div');
-                playTrigger.style.position = 'fixed';
-                playTrigger.style.top = '0';
-                playTrigger.style.left = '0';
-                playTrigger.style.width = '1px';
-                playTrigger.style.height = '1px';
-                playTrigger.style.zIndex = '9999';
-                playTrigger.style.opacity = '0';
-                document.body.appendChild(playTrigger);
-                
-                // Add a one-time click handler to trigger video play
-                playTrigger.addEventListener('click', function() {
-                    // YouTube iframe API would be better here, but for simplicity:
-                    // Reload the iframe with autoplay
-                    iframe.src = iframe.src.replace('autoplay=0', 'autoplay=1') + '&autoplay=1';
-                    document.body.removeChild(playTrigger);
-                });
-                
-                // Simulate a click (this may not work due to browser restrictions)
-                setTimeout(() => {
-                    const event = new MouseEvent('click', {
-                        view: window,
-                        bubbles: true,
-                        cancelable: true
-                    });
-                    playTrigger.dispatchEvent(event);
-                }, 1000);
-            }
-        }
-        
-        // For better reliability, use the YouTube Iframe API
-        function loadYouTubeAPI() {
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        }
-        
-        // This function will be called by YouTube API when ready
-        function onYouTubeIframeAPIReady() {
-            const player = new YT.Player('youtube-background', {
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-        
-        function onPlayerReady(event) {
-            // Try to play the video
-            event.target.playVideo();
-            
-            // For iOS, mute first (autoplay requires muted on iOS)
-            event.target.mute();
-            
-            // Check if video is playing after a short delay
-            setTimeout(() => {
-                if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
-                    // Video didn't start, try again with user interaction
-                    document.addEventListener('click', function playVideoOnce() {
-                        event.target.playVideo();
-                        document.removeEventListener('click', playVideoOnce);
-                    }, { once: true });
-                }
-            }, 1000);
-        }
-        
-        function onPlayerStateChange(event) {
-            // Handle video state changes if needed
-        }
-        
-        // Load YouTube API
-        loadYouTubeAPI();
-        
-        // Initial check
-        checkVideoPlayback();
-    });
-    </script>
    <!-- About Start -->
    <div class="about-section">
     <div class="about-container">
