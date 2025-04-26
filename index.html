@@ -154,48 +154,45 @@
   <section class="modern-hero">
     <div class="video-overlay"></div>
 
-    <!-- YouTube video iframe as background -->
-    <div class="youtube-video-container">
-        <iframe
-            id="youtube-background"
-            src="https://www.youtube.com/embed/111lzdjuE6k?autoplay=1&mute=1&loop=1&playlist=111lzdjuE6k&controls=0&modestbranding=1&rel=0"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-        ></iframe>
-    </div>
-
-    <div class="hero-content-container">
-        <div class="hero-content">
-            <div class="hero-tagline" style="color: white;">Living with Meaning and Purpose</div>
-            <h1 class="hero-title">
-                <span class="title-line">Lutheran Care Center</span>
-                <span class="title-underline"></span>
-            </h1>
-            <p class="hero-subtitle">
-                Eben Ezer creates an environment where life happens, fostering
-                independence and wellbeing through compassionate care.
-            </p>
-            <div class="hero-actions">
-                <a href="about.html" class="primary-action">
-                    Discover Our Community
-                    <span class="action-arrow">→</span>
-                </a>
-                <a href="about.html" class="secondary-action">
-                    Our Care Philosophy
-                    <span class="action-arrow">→</span>
-                </a>
+    <section class="modern-hero">
+        <div class="video-overlay"></div>
+        
+        <!-- YouTube video iframe as background -->
+        <div class="youtube-video-container">
+            <iframe id="youtube-background" src="https://www.youtube.com/embed/111lzdjuE6k?autoplay=1&mute=1&loop=1&playlist=111lzdjuE6k&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        
+        <div class="hero-content-container">
+            <div class="hero-content">
+             <div class="hero-tagline" style="color: white;">Living with Meaning and Purpose</div>
+                <h1 class="hero-title">
+                    <span class="title-line">Lutheran Care Center</span>
+                    <span class="title-underline"></span>
+                </h1>
+                <p class="hero-subtitle">
+                    Eben Ezer creates an environment where life happens, fostering independence 
+                    and wellbeing through compassionate care.
+                </p>
+                <div class="hero-actions">
+                    <a href="about.html" class="primary-action">
+                        Discover Our Community
+                        <span class="action-arrow">→</span>
+                    </a>
+                    <a href="about.html" class="secondary-action">
+                        Our Care Philosophy
+                        <span class="action-arrow">→</span>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="scroll-indicator">
-        <span>Explore More</span>
-        <div class="indicator-arrow"></div>
-    </div>
-</section>
-
-<style>
+        
+        <div class="scroll-indicator">
+            <span>Explore More</span>
+            <div class="indicator-arrow"></div>
+        </div>
+    </section>
+    
+    <style>
     .modern-hero {
         position: relative;
         height: 100vh;
@@ -215,7 +212,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0,0,0,0.3);
         z-index: 1;
     }
     
@@ -234,28 +231,19 @@
         top: 50%;
         left: 50%;
         width: 100vw;
-        height: 56.25vw; /* 16:9 aspect ratio */
+        height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
         min-height: 100vh;
-        min-width: 177.77vh; /* 16:9 aspect ratio */
+        min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
         transform: translate(-50%, -50%);
     }
-
-    @media only screen and (max-width: 767px) {
-        .youtube-video-container iframe {
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            left: 0;
-            transform: none;
-        }
-    }
-
+    
     .hero-content-container {
         position: relative;
         z-index: 2;
+        width: 100%;
         padding: 0 30px;
     }
-
+    
     .hero-content {
         max-width: 1200px;
         margin: 0 auto;
@@ -263,7 +251,105 @@
         transform: translateY(30px);
         animation: fadeInUp 1s ease forwards 0.3s;
     }
-
+    
+    .hero-tagline {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        font-weight: 400;
+        color: rgba(255,255,255,0.9);
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 300;
+        line-height: 1.1;
+        margin-bottom: 25px;
+        letter-spacing: -1px;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .title-line {
+        position: relative;
+        display: inline-block;
+        color: #f8f9fa;
+    }
+    
+    .title-underline {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #333A28;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: underlineGrow 1.2s ease forwards 0.8s;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.9);
+    }
+    
+    .hero-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+       
+    }
+    
+    .primary-action, .secondary-action {
+        display: inline-flex;
+        align-items: center;
+        padding: 16px 32px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+    
+    .primary-action {
+        background-color: #333A28;
+        color: white;
+    }
+    
+    .primary-action:hover {
+        background-color: #252a1b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(51, 58, 40, 0.4);
+    }
+    
+    .secondary-action {
+        background-color: transparent;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .secondary-action:hover {
+        background-color: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.5);
+        transform: translateY(-2px);
+    }
+    
+    .action-arrow {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+    }
+    
+    .primary-action:hover .action-arrow,
+    .secondary-action:hover .action-arrow {
+        transform: translateX(3px);
+    }
+    
     .scroll-indicator {
         position: absolute;
         bottom: 40px;
@@ -272,12 +358,21 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255,255,255,0.8);
         font-size: 0.9rem;
         animation: bounce 2s infinite;
         z-index: 2;
     }
-
+    
+    .indicator-arrow {
+        width: 20px;
+        height: 20px;
+        border-bottom: 2px solid white;
+        border-right: 2px solid white;
+        transform: rotate(45deg);
+        margin-top: 5px;
+    }
+    
     @keyframes fadeInUp {
         from {
             opacity: 0;
@@ -288,7 +383,16 @@
             transform: translateY(0);
         }
     }
-
+    
+    @keyframes underlineGrow {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+    
     @keyframes bounce {
         0%, 20%, 50%, 80%, 100% {
             transform: translateY(0) translateX(-50%);
@@ -300,7 +404,194 @@
             transform: translateY(-10px) translateX(-50%);
         }
     }
-</style>
+    
+    @media (max-width: 1024px) {
+        .hero-title {
+            font-size: 3.2rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .modern-hero {
+            min-height: 600px;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            max-width: 90%;
+        }
+        
+        .hero-tagline {
+            font-size: 1rem;
+        }
+        
+        .hero-actions {
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .primary-action, .secondary-action {
+            width: 100%;
+            max-width: 250px;
+            justify-content: center;
+            padding: 14px 20px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+        
+        .hero-content {
+            padding-top: 60px;
+        }
+        
+        .scroll-indicator {
+            bottom: 20px;
+        }
+    }
+    </style>
+    
+ 
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load YouTube API
+    function loadYouTubeAPI() {
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+    
+    // This function will be called by YouTube API when ready
+    function onYouTubeIframeAPIReady() {
+        // Check if we're on a mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Create the player with appropriate parameters
+        const player = new YT.Player('youtube-background', {
+            videoId: '111lzdjuE6k',
+            playerVars: {
+                'autoplay': 1,
+                'mute': 1,
+                'loop': 1,
+                'playlist': '111lzdjuE6k', // Required for loop to work
+                'controls': 0,
+                'modestbranding': 1,
+                'rel': 0,
+                'playsinline': 1 // Important for iOS
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+        
+        // For mobile devices, we'll need to handle the play promise
+        if (isMobile) {
+            // Add a one-time click handler to the entire hero section
+            document.querySelector('.modern-hero').addEventListener('click', function mobilePlayHandler() {
+                if (player && typeof player.playVideo === 'function') {
+                    player.playVideo();
+                }
+                this.removeEventListener('click', mobilePlayHandler);
+            }, { once: true });
+        }
+    }
+    
+    function onPlayerReady(event) {
+        // Try to play the video immediately
+        event.target.playVideo();
+        
+        // Check if video is playing after a short delay
+        setTimeout(() => {
+            if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
+                // Video didn't start, show a play button overlay for mobile
+                showMobilePlayOverlay(event.target);
+            }
+        }, 1000);
+    }
+    
+    function onPlayerStateChange(event) {
+        // Handle video state changes if needed
+        if (event.data === YT.PlayerState.ENDED) {
+            event.target.playVideo(); // Ensure looping
+        }
+    }
+    
+    function showMobilePlayOverlay(player) {
+        // Create a play overlay for mobile devices
+        const overlay = document.createElement('div');
+        overlay.className = 'mobile-play-overlay';
+        overlay.innerHTML = `
+            <div class="play-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" fill="white"/>
+                </svg>
+                <span>Tap to Play Video</span>
+            </div>
+        `;
+        
+        overlay.style.position = 'absolute';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = '3';
+        overlay.style.cursor = 'pointer';
+        
+        overlay.querySelector('.play-button').style.display = 'flex';
+        overlay.querySelector('.play-button').style.flexDirection = 'column';
+        overlay.querySelector('.play-button').style.alignItems = 'center';
+        overlay.querySelector('.play-button svg').style.width = '60px';
+        overlay.querySelector('.play-button svg').style.height = '60px';
+        overlay.querySelector('.play-button span').style.color = 'white';
+        overlay.querySelector('.play-button span').style.marginTop = '10px';
+        overlay.querySelector('.play-button span').style.fontSize = '1.2rem';
+        
+        overlay.addEventListener('click', function() {
+            player.playVideo();
+            document.body.removeChild(overlay);
+        });
+        
+        document.body.appendChild(overlay);
+    }
+    
+    // Add some styles for the mobile play overlay
+    const style = document.createElement('style');
+    style.textContent = `
+        .mobile-play-overlay {
+            transition: opacity 0.3s ease;
+        }
+        .mobile-play-overlay:hover {
+            opacity: 0.9;
+        }
+        @media (min-width: 769px) {
+            .mobile-play-overlay {
+                display: none !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Load YouTube API
+    loadYouTubeAPI();
+});
+</script>
    <!-- About Start -->
    <div class="about-section">
     <div class="about-container">
