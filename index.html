@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Eben Ezer </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Arcade" name="Assisted Living, Skilled Nursing and Memory Care
+    <meta content="Free HTML Templates" name="Assisted Living, Skilled Nursing and Memory Care
      all located on one campus means Eben Ezer can provide just the right amount of support
       needed for each of our neighbors. Mission-driven care
      provided by professional caregivers maximizes health and independence for our neighbors ">
@@ -151,9 +151,8 @@
         </nav>
     </div>
     <!-- Navbar End -->
-  <section class="modern-hero">
-    <div class="video-overlay"></div>
-
+    <!-- Hero Section Start -->
+   
     <section class="modern-hero">
         <div class="video-overlay"></div>
         
@@ -462,136 +461,135 @@
     }
     </style>
     
- 
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Load YouTube API
-    function loadYouTubeAPI() {
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    }
-    
-    // This function will be called by YouTube API when ready
-    function onYouTubeIframeAPIReady() {
-        // Check if we're on a mobile device
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        // Create the player with appropriate parameters
-        const player = new YT.Player('youtube-background', {
-            videoId: '111lzdjuE6k',
-            playerVars: {
-                'autoplay': 1,
-                'mute': 1,
-                'loop': 1,
-                'playlist': '111lzdjuE6k', // Required for loop to work
-                'controls': 0,
-                'modestbranding': 1,
-                'rel': 0,
-                'playsinline': 1 // Important for iOS
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load YouTube API
+            function loadYouTubeAPI() {
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
             }
-        });
-        
-        // For mobile devices, we'll need to handle the play promise
-        if (isMobile) {
-            // Add a one-time click handler to the entire hero section
-            document.querySelector('.modern-hero').addEventListener('click', function mobilePlayHandler() {
-                if (player && typeof player.playVideo === 'function') {
-                    player.playVideo();
+            
+            // This function will be called by YouTube API when ready
+            function onYouTubeIframeAPIReady() {
+                // Check if we're on a mobile device
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                // Create the player with appropriate parameters
+                const player = new YT.Player('youtube-background', {
+                    videoId: '111lzdjuE6k',
+                    playerVars: {
+                        'autoplay': 1,
+                        'mute': 1,
+                        'loop': 1,
+                        'playlist': '111lzdjuE6k', // Required for loop to work
+                        'controls': 0,
+                        'modestbranding': 1,
+                        'rel': 0,
+                        'playsinline': 1 // Important for iOS
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+                
+                // For mobile devices, we'll need to handle the play promise
+                if (isMobile) {
+                    // Add a one-time click handler to the entire hero section
+                    document.querySelector('.modern-hero').addEventListener('click', function mobilePlayHandler() {
+                        if (player && typeof player.playVideo === 'function') {
+                            player.playVideo();
+                        }
+                        this.removeEventListener('click', mobilePlayHandler);
+                    }, { once: true });
                 }
-                this.removeEventListener('click', mobilePlayHandler);
-            }, { once: true });
-        }
-    }
-    
-    function onPlayerReady(event) {
-        // Try to play the video immediately
-        event.target.playVideo();
-        
-        // Check if video is playing after a short delay
-        setTimeout(() => {
-            if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
-                // Video didn't start, show a play button overlay for mobile
-                showMobilePlayOverlay(event.target);
             }
-        }, 1000);
-    }
-    
-    function onPlayerStateChange(event) {
-        // Handle video state changes if needed
-        if (event.data === YT.PlayerState.ENDED) {
-            event.target.playVideo(); // Ensure looping
-        }
-    }
-    
-    function showMobilePlayOverlay(player) {
-        // Create a play overlay for mobile devices
-        const overlay = document.createElement('div');
-        overlay.className = 'mobile-play-overlay';
-        overlay.innerHTML = `
-            <div class="play-button">
-                <svg viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" fill="white"/>
-                </svg>
-                <span>Tap to Play Video</span>
-            </div>
-        `;
-        
-        overlay.style.position = 'absolute';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = '3';
-        overlay.style.cursor = 'pointer';
-        
-        overlay.querySelector('.play-button').style.display = 'flex';
-        overlay.querySelector('.play-button').style.flexDirection = 'column';
-        overlay.querySelector('.play-button').style.alignItems = 'center';
-        overlay.querySelector('.play-button svg').style.width = '60px';
-        overlay.querySelector('.play-button svg').style.height = '60px';
-        overlay.querySelector('.play-button span').style.color = 'white';
-        overlay.querySelector('.play-button span').style.marginTop = '10px';
-        overlay.querySelector('.play-button span').style.fontSize = '1.2rem';
-        
-        overlay.addEventListener('click', function() {
-            player.playVideo();
-            document.body.removeChild(overlay);
+            
+            function onPlayerReady(event) {
+                // Try to play the video immediately
+                event.target.playVideo();
+                
+                // Check if video is playing after a short delay
+                setTimeout(() => {
+                    if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
+                        // Video didn't start, show a play button overlay for mobile
+                        showMobilePlayOverlay(event.target);
+                    }
+                }, 1000);
+            }
+            
+            function onPlayerStateChange(event) {
+                // Handle video state changes if needed
+                if (event.data === YT.PlayerState.ENDED) {
+                    event.target.playVideo(); // Ensure looping
+                }
+            }
+            
+            function showMobilePlayOverlay(player) {
+                // Create a play overlay for mobile devices
+                const overlay = document.createElement('div');
+                overlay.className = 'mobile-play-overlay';
+                overlay.innerHTML = `
+                    <div class="play-button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" fill="white"/>
+                        </svg>
+                        <span>Tap to Play Video</span>
+                    </div>
+                `;
+                
+                overlay.style.position = 'absolute';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+                overlay.style.display = 'flex';
+                overlay.style.alignItems = 'center';
+                overlay.style.justifyContent = 'center';
+                overlay.style.zIndex = '3';
+                overlay.style.cursor = 'pointer';
+                
+                overlay.querySelector('.play-button').style.display = 'flex';
+                overlay.querySelector('.play-button').style.flexDirection = 'column';
+                overlay.querySelector('.play-button').style.alignItems = 'center';
+                overlay.querySelector('.play-button svg').style.width = '60px';
+                overlay.querySelector('.play-button svg').style.height = '60px';
+                overlay.querySelector('.play-button span').style.color = 'white';
+                overlay.querySelector('.play-button span').style.marginTop = '10px';
+                overlay.querySelector('.play-button span').style.fontSize = '1.2rem';
+                
+                overlay.addEventListener('click', function() {
+                    player.playVideo();
+                    document.body.removeChild(overlay);
+                });
+                
+                document.body.appendChild(overlay);
+            }
+            
+            // Add some styles for the mobile play overlay
+            const style = document.createElement('style');
+            style.textContent = `
+                .mobile-play-overlay {
+                    transition: opacity 0.3s ease;
+                }
+                .mobile-play-overlay:hover {
+                    opacity: 0.9;
+                }
+                @media (min-width: 769px) {
+                    .mobile-play-overlay {
+                        display: none !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Load YouTube API
+            loadYouTubeAPI();
         });
-        
-        document.body.appendChild(overlay);
-    }
-    
-    // Add some styles for the mobile play overlay
-    const style = document.createElement('style');
-    style.textContent = `
-        .mobile-play-overlay {
-            transition: opacity 0.3s ease;
-        }
-        .mobile-play-overlay:hover {
-            opacity: 0.9;
-        }
-        @media (min-width: 769px) {
-            .mobile-play-overlay {
-                display: none !important;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Load YouTube API
-    loadYouTubeAPI();
-});
-</script>
+        </script>
    <!-- About Start -->
    <div class="about-section">
     <div class="about-container">
